@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Hub | Home</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        window.onload = function() {
+            const loggedIn = localStorage.getItem("loggedIn");
+            if (!loggedIn) {
+                alert("Please log in with Google to access this website.");
+                window.location.href = "#login";
+            }
+        };
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Press+Start+2P&family=Poppins:wght@400;600&display=swap');
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #0A0A0A;
+            color: #E0E0E0;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .light-theme {
+            background-color: #FFFFFF;
+            color: #101010;
+        }
+        .dark-theme {
+            background-color: #0A0A0A;
+            color: #E0E0E0;
+        }
+        .poppins-font { font-family: 'Poppins', sans-serif; }
+        .orbitron-font { font-family: 'Orbitron', sans-serif; }
+        .press-start-font { font-family: 'Press Start 2P', cursive; }
+
+        header {
+            background-color: #101010;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+            position: relative;
+        }
+        .g_id_signin {
+            position: absolute;
+            top: 90px; /* Lowered to avoid overlapping */
+            right: 20px;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #00FFFF;
+            border-radius: 25px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #00FFFF;
+            margin: 5px 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Press Start 2P', cursive;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        nav a:hover {
+            color: #4CAF50;
+            transform: scale(1.1);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: radial-gradient(circle, #00FFFF 0%, #000000 100%);
+            border-bottom-left-radius: 50% 10%;
+            border-bottom-right-radius: 50% 10%;
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.5);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #00FFFF;
+        }
+        .hero p {
+            font-size: 1.3rem;
+        }
+        .futuristic-buttons, .settings-content button {
+            background: linear-gradient(135deg, #00FFFF, #4CAF50);
+            border: none;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-size: 1.1rem;
+            color: #101010;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 0 20px #00FFFF;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .futuristic-buttons button:hover, .settings-content button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 35px #00FFFF, 0 0 60px #4CAF50;
+        }
+        .search-bar {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .search-bar input {
+            width: 60%;
+            padding: 10px;
+            border: 2px solid #00FFFF;
+            border-radius: 25px;
+            background-color: #101010;
+            color: #00FFFF;
+        }
+        .search-bar button {
+            background: linear-gradient(135deg, #00FFFF, #4CAF50);
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            color: #101010;
+            cursor: pointer;
+            margin-left: 10px;
+            box-shadow: 0 0 20px #00FFFF;
+        }
+        .settings-content {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .show-settings .settings-content {
+            display: block;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 15px 0;
+            background-color: #101010;
+            color: #00FFFF;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="dark-theme orbitron-font">
+    <header>
+        <div id="g_id_onload"
+             data-client_id="YOUR_CLIENT_ID"
+             data-callback="handleLogin">
+        </div>
+
+        <div class="g_id_signin"
+             data-type="standard"
+             data-size="large">
+        </div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#upload" onclick="requireLogin(event)">Upload Code</a>
+            <a href="#projects" onclick="requireLogin(event)">Browse Codes</a>
+            <a href="#history">History</a>
+            <a href="#feedback">Feedback</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Welcome to Coding Hub</h1>
+        <p>Your go-to place for sharing and exploring source code projects!</p>
+        <div class="search-bar">
+            <input type="text" placeholder="Search code projects...">
+            <button>Search</button>
+        </div>
+        <div class="futuristic-buttons">
+            <button>Explore Projects</button>
+            <button onclick="requireLogin(event)">Upload Your Code</button>
+            <button>AI Code Scanner</button>
+            <button>Top Trending Codes</button>
+            <button>Community Forum</button>
+            <button onclick="requireLogin(event)">Comment</button>
+        </div>
+    </div>
+
+    <footer>
+        Developed by prasa_nth4585
+    </footer>
+
+    <script>
+        function setTheme(theme) {
+            document.body.className = theme + ' ' + document.body.classList[1];
+        }
+        function setFont(font) {
+            document.body.className = document.body.classList[0] + ' ' + font;
+        }
+        function toggleSettings() {
+            document.body.classList.toggle('show-settings');
+        }
+        function requireLogin(event) {
+            alert('Please log in with Google to access this feature.');
+            event.preventDefault();
+        }
+    </script>
+</body>
+</html>
